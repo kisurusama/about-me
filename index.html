@@ -106,9 +106,25 @@
 
     .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
     .contact-copy { max-width: 520px; margin: 17px 0 0; color: var(--muted); font-size: 18px; }
-    .contact-box { padding: 30px; border: 2px solid var(--ink); background: var(--lime); box-shadow: var(--shadow); }
-    .contact-box p { margin: 0 0 20px; font-size: 19px; font-weight: 600; }
-    .contact-box a { display: inline-block; border-bottom: 2px solid var(--ink); font: 500 14px "DM Mono", monospace; }
+    .contact-box {
+      position: relative; overflow: hidden; padding: 30px; border: 2px solid var(--ink);
+      background: var(--lime); box-shadow: var(--shadow);
+    }
+    .contact-box::after {
+      content: "✳"; position: absolute; top: -30px; right: 11px; color: rgba(21,21,21,.12);
+      font-size: 150px; line-height: 1; transform: rotate(18deg); pointer-events: none;
+    }
+    .contact-box > * { position: relative; z-index: 1; }
+    .contact-kicker { margin: 0 0 24px; color: var(--muted); font: 500 11px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .contact-box p { margin: 0 0 22px; font-size: 21px; line-height: 1.25; font-weight: 600; }
+    .contact-links { display: grid; gap: 10px; }
+    .contact-link {
+      display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 12px 0;
+      border-top: 1px solid rgba(21,21,21,.28); font: 500 13px "DM Mono", monospace;
+    }
+    .contact-link:last-child { border-bottom: 1px solid rgba(21,21,21,.28); }
+    .contact-link span { overflow-wrap: anywhere; }
+    .contact-link:hover { color: var(--accent); }
 
     footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 0 35px; color: var(--muted); font: 12px "DM Mono", monospace; }
     footer a:hover { color: var(--accent); }
@@ -220,20 +236,16 @@
         <div>
           <p class="eyebrow">03 / Let’s connect</p>
           <h2>Have an idea?<br>Let’s make it real (or not, it's up to you).</h2>
-          <p class="contact-copy">The best way to find me is GitHub. I’m always interested in interesting problems, strange experiments, and useful collaborations.</p>
+          <p class="contact-copy">Got a question, an interesting problem, or a strange experiment? Pick your favorite doorway and say hello.</p>
         </div>
         <div class="contact-box">
-          <p>Currently building, learning, and looking for the next fun rabbit hole.</p>
-          <a href="https://github.com/kisurusama" target="_blank" rel="noreferrer">github.com/kisurusama ↗</a>
-          <p>In case you were wondering, I'm also on Twitter and Instagram and TikTok and Reddit and Facebook and Threads and Mastodon and Bluesky. (Don't mind the inconsistencies in my social media presence.)</p>
-          <a href="https://twitter.com/mihoyoschan" target="_blank" rel="noreferrer">twitter.com/mihoyoschan ↗</a>
-          <a href="https://instagram.com/mihoyoschan" target="_blank" rel="noreferrer">instagram.com/mihoyoschan ↗</a>
-          <a href="https://tiktok.com/@nokachisan" target="_blank" rel="noreferrer">tiktok.com/@nokachisan ↗</a>
-          <a href="https://reddit.com/user/kisurus" target="_blank" rel="noreferrer">reddit.com/user/kisurus ↗</a>
-          <a href="https://facebook.com/mihoyoschan" target="_blank" rel="noreferrer">facebook.com/mihoyoschan ↗</a>
-          <a href="https://threads.net/@mihoyoschan" target="_blank" rel="noreferrer">threads.net/@mihoyoschan ↗</a>
-          <a href="https://mastodon.social/@mihoyoschan" target="_blank" rel="noreferrer">mastodon.social/@mihoyoschan ↗</a>
-          <a href="https://bsky.app/profile/nokachis.bsky.social" target="_blank" rel="noreferrer">bsky.app/profile/nokachis.bsky.social ↗</a>
+          <p class="contact-kicker">Currently online-ish</p>
+          <p>Building, learning, and looking for the next fun rabbit hole.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:kisurusama@mail.kisuru.site"><span>kisurusama@mail.kisuru.site</span><b>↗</b></a>
+            <a class="contact-link" href="https://github.com/kisurusama" target="_blank" rel="noreferrer"><span>github.com/kisurusama</span><b>↗</b></a>
+            <a class="contact-link" href="https://bsky.app/profile/nokachis.bsky.social" target="_blank" rel="noreferrer"><span>bsky.app/profile/nokachis.bsky.social</span><b>↗</b></a>
+          </div>
         </div>
       </div>
     </section>
