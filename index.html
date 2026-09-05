@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Peerapat Siri — developer, builder, and curious human from Thailand.">
+  <title>Peerapat Siri — builder of useful little things</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --surface: #fffdf8;
+      --ink: #151515;
+      --muted: #6d6b65;
+      --line: #d9d5ca;
+      --accent: #ff5c35;
+      --accent-soft: #ffe0d5;
+      --lime: #c8ef69;
+      --shadow: 5px 5px 0 var(--ink);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 6%, rgba(255, 92, 53, .12), transparent 24rem),
+        linear-gradient(120deg, transparent 0 49.9%, rgba(21,21,21,.025) 50% 50.2%, transparent 50.3%),
+        var(--bg);
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .mono { font-family: "DM Mono", monospace; }
+    .eyebrow {
+      margin: 0 0 15px;
+      color: var(--accent);
+      font: 500 12px/1.2 "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    header {
+      padding: 27px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    .brand-mark {
+      display: grid; place-items: center; width: 35px; height: 35px;
+      border: 2px solid var(--ink); background: var(--lime); box-shadow: 3px 3px 0 var(--ink);
+      font-size: 18px;
+    }
+    .nav-links { display: flex; gap: 27px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero { display: grid; grid-template-columns: 1.35fr .65fr; gap: 75px; align-items: end; padding: 108px 0 115px; }
+    h1 { max-width: 780px; margin: 0; font-size: clamp(54px, 8vw, 104px); line-height: .94; letter-spacing: -.075em; }
+    h1 span { color: var(--accent); }
+    .hero-copy { max-width: 380px; margin: 27px 0 0; color: var(--muted); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button {
+      display: inline-flex; align-items: center; gap: 9px; padding: 13px 17px;
+      border: 2px solid var(--ink); background: var(--ink); color: white; font-weight: 600;
+      box-shadow: 3px 3px 0 var(--accent); transition: transform .2s, box-shadow .2s;
+    }
+    .button:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--accent); }
+    .button.secondary { color: var(--ink); background: transparent; box-shadow: none; }
+    .button.secondary:hover { background: var(--accent-soft); }
+
+    .profile-card { position: relative; padding: 24px; border: 2px solid var(--ink); background: var(--surface); box-shadow: var(--shadow); transform: rotate(2deg); }
+    .profile-card::before { content: "HELLO"; position: absolute; top: -14px; right: 17px; padding: 4px 8px; background: var(--accent); color: white; font: 500 11px "DM Mono", monospace; transform: rotate(-4deg); }
+    .avatar { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border: 2px solid var(--ink); filter: saturate(.8); }
+    .profile-info { display: flex; justify-content: space-between; align-items: end; gap: 12px; padding-top: 18px; }
+    .profile-info strong { display: block; font-size: 19px; }
+    .profile-info small { color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: 6px; color: #36830a; font: 500 11px "DM Mono", monospace; }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #74c51a; box-shadow: 0 0 0 4px #e5f4c9; }
+
+    section { padding: 88px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 34px; }
+    h2 { margin: 0; font-size: clamp(33px, 5vw, 58px); line-height: 1; letter-spacing: -.06em; }
+    .section-note { max-width: 305px; margin: 0; color: var(--muted); font-size: 14px; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .about-grid p { max-width: 520px; margin: 0; font-size: 20px; line-height: 1.45; }
+    .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .fact { min-height: 110px; padding: 17px; background: var(--surface); }
+    .fact b { display: block; font-size: 29px; letter-spacing: -.04em; }
+    .fact span { color: var(--muted); font: 12px "DM Mono", monospace; text-transform: uppercase; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .project { display: flex; min-height: 265px; flex-direction: column; padding: 22px; border: 1px solid var(--ink); background: var(--surface); transition: transform .2s, background .2s; }
+    .project:hover { transform: translateY(-5px); background: var(--accent-soft); }
+    .project-top { display: flex; justify-content: space-between; color: var(--accent); font: 12px "DM Mono", monospace; }
+    .project h3 { margin: 34px 0 9px; font-size: 23px; letter-spacing: -.04em; }
+    .project p { margin: 0; color: var(--muted); font-size: 14px; }
+    .project-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto; padding-top: 25px; color: var(--muted); font: 12px "DM Mono", monospace; }
+    .repo-link { color: var(--ink); font-weight: 500; }
+    .repo-link:hover { color: var(--accent); }
+
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .contact-copy { max-width: 520px; margin: 17px 0 0; color: var(--muted); font-size: 18px; }
+    .contact-box { padding: 30px; border: 2px solid var(--ink); background: var(--lime); box-shadow: var(--shadow); }
+    .contact-box p { margin: 0 0 20px; font-size: 19px; font-weight: 600; }
+    .contact-box a { display: inline-block; border-bottom: 2px solid var(--ink); font: 500 14px "DM Mono", monospace; }
+
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 26px 0 35px; color: var(--muted); font: 12px "DM Mono", monospace; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 600px); }
+      header { padding: 20px 0; }
+      .nav-links { gap: 13px; font-size: 12px; }
+      .hero, .about-grid, .contact { grid-template-columns: 1fr; gap: 45px; }
+      .hero { padding: 75px 0 80px; }
+      .profile-card { max-width: 330px; margin-left: auto; margin-right: 10px; }
+      section { padding: 65px 0; }
+      .section-head { display: block; }
+      .section-note { margin-top: 16px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project { min-height: 220px; }
+      footer { display: block; }
+      footer span { display: block; margin-top: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#"><span class="brand-mark">P</span><span>peerapat.siri</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Say hi</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <p class="eyebrow">Developer / maker / curious human</p>
+        <h1>Making the web a little more <span>interesting.</span></h1>
+        <p class="hero-copy">I’m Peerapat — a student and builder from Thailand who likes turning odd ideas into useful software.</p>
+        <div class="hero-actions">
+          <a class="button" href="#work">See my work <span>↘</span></a>
+          <a class="button secondary" href="https://github.com/kisurusama" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+      <aside class="profile-card">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/151990693?v=4" alt="Peerapat Siri">
+        <div class="profile-info">
+          <div><strong>Peerapat Siri</strong><small>@kisurusama · Thailand</small></div>
+          <span class="status">online-ish</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">01 / The person</p><h2>A bit about me</h2></div>
+          <p class="section-note">Still learning, always shipping, occasionally sleep-deprived.</p>
+        </div>
+        <div class="about-grid">
+          <p>I enjoy exploring software from every angle — tiny web experiments, developer tools, automation, APIs, and the occasional intentionally weird project. My GitHub is a scrapbook of things I’m curious about.</p>
+          <div class="facts">
+            <div class="fact"><b>31</b><span>public repos</span></div>
+            <div class="fact"><b>8</b><span>followers</span></div>
+            <div class="fact"><b>∞</b><span>ideas in progress</span></div>
+            <div class="fact"><b>TH</b><span>based in Thailand</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">02 / Selected work</p><h2>Things I’ve built</h2></div>
+          <p class="section-note">A few stops from the rabbit hole. More experiments live on GitHub.</p>
+        </div>
+        <div class="project-grid">
+          <a class="project" href="https://github.com/kisurusama/metrics" target="_blank" rel="noreferrer">
+            <div class="project-top"><span>01</span><span>JavaScript</span></div>
+            <h3>metrics</h3>
+            <p>An infographics generator for turning GitHub account stats into SVG, Markdown, PDF, or JSON.</p>
+            <div class="project-footer"><span>30+ plugins</span><span class="repo-link">View repo ↗</span></div>
+          </a>
+          <a class="project" href="https://github.com/kisurusama/RemoteSQL" target="_blank" rel="noreferrer">
+            <div class="project-top"><span>02</span><span>Go</span></div>
+            <h3>RemoteSQL</h3>
+            <p>A small tool for easily accessing and controlling a SQL database from anywhere.</p>
+            <div class="project-footer"><span>database tooling</span><span class="repo-link">View repo ↗</span></div>
+          </a>
+          <a class="project" href="https://github.com/totally-not-kisuru/anonymous-report" target="_blank" rel="noreferrer">
+            <div class="project-top"><span>03</span><span>Open source</span></div>
+            <h3>anonymous-report</h3>
+            <p>A privacy-minded anonymous reporting system for social media communities.</p>
+            <div class="project-footer"><span>newest project</span><span class="repo-link">View repo ↗</span></div>
+          </a>
+          <a class="project" href="https://github.com/kisurusama/vibe-code-assistant" target="_blank" rel="noreferrer">
+            <div class="project-top"><span>04</span><span>Python</span></div>
+            <h3>vibe-code-assistant</h3>
+            <p>A vibe-coded assistant for exploring a more conversational way to build software.</p>
+            <div class="project-footer"><span>AI experiment</span><span class="repo-link">View repo ↗</span></div>
+          </a>
+          <a class="project" href="https://github.com/kisurusama/codeguy.org" target="_blank" rel="noreferrer">
+            <div class="project-top"><span>05</span><span>JavaScript</span></div>
+            <h3>codeguy.org</h3>
+            <p>A little corner of the internet for experimenting with code and ideas.</p>
+            <div class="project-footer"><span>web project</span><span class="repo-link">View repo ↗</span></div>
+          </a>
+          <a class="project" href="https://github.com/kisurusama/awesome-free-apps" target="_blank" rel="noreferrer">
+            <div class="project-top"><span>06</span><span>Curated list</span></div>
+            <h3>awesome-free-apps</h3>
+            <p>A hand-picked list of genuinely useful free apps for PC and mobile.</p>
+            <div class="project-footer"><span>useful things</span><span class="repo-link">View repo ↗</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact">
+        <div>
+          <p class="eyebrow">03 / Let’s connect</p>
+          <h2>Have an idea?<br>Let’s make it real.</h2>
+          <p class="contact-copy">The best way to find me is GitHub. I’m always interested in interesting problems, strange experiments, and useful collaborations.</p>
+        </div>
+        <div class="contact-box">
+          <p>Currently building, learning, and looking for the next fun rabbit hole.</p>
+          <a href="https://github.com/kisurusama" target="_blank" rel="noreferrer">github.com/kisurusama ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© 2026 Peerapat Siri</span>
+    <span>Made with curiosity + plain HTML</span>
+  </footer>
+</body>
+</html>
